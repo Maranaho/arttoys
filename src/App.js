@@ -1,2 +1,7 @@
-const App = ()=><h1>Art toys</h1>
+import Nav from './components/Nav'
+const App = ()=>(
+  <main className="ArtToys">
+    <Nav/>
+  </main>
+)
 export default App
