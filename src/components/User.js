@@ -3,7 +3,7 @@ import ArtToysStateContext from '../context/ArtToysStateContext'
 const User = ()=>{
   const { data } = useContext(ArtToysStateContext)
   if(!data)return null
-  
+
   const { firstName,imgUrl } = data.user
   return (
     <article className="User">

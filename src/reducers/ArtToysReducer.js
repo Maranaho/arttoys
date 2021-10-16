@@ -1,5 +1,5 @@
 let initialArtToysState = {
-  isAuth:false,
+  showMenu:false,
   data:null,
 }
 const ArtToysReducer = (state, action) => {
@@ -10,10 +10,10 @@ const ArtToysReducer = (state, action) => {
       STORE_DATA.data = action.payload
     return STORE_DATA;
 
-    case 'SET_IS_AUTH':
-      let SET_IS_AUTH = {...state}
-      SET_IS_AUTH.isAuth = action.payload
-    return SET_IS_AUTH;
+    case 'SHOW_MENU':
+      let SHOW_MENU = {...state}
+      SHOW_MENU.showMenu = action.payload
+    return SHOW_MENU;
 
     default: throw new Error('Unexpected action');
   }

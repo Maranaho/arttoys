@@ -1,21 +1,23 @@
 import { useContext } from 'react'
-import { Link } from "react-router-dom"
 import ArtToysStateContext from '../context/ArtToysStateContext'
 import ArtToysDispatchContext from '../context/ArtToysDispatchContext'
+import { Link } from "react-router-dom"
 
 const Menu = ()=>{
   const dispatch = useContext(ArtToysDispatchContext)
-  const { isAuth } = useContext(ArtToysStateContext)
+  const { showMenu } = useContext(ArtToysStateContext)
+
   return (
       <section className="Menu">
-        <button>Menu</button>
-        {!isAuth&&<input placeholder="username" type="text"/>}
-        <ul>
+        <ul onClick={()=>dispatch({type:'SHOW_MENU',payload:false})} className={showMenu?'show':''}>
           <li><Link to="/">Shop</Link></li>
           <li><Link to="/basket">My Basket</Link></li>
           <li><Link to="/profile">My Profile</Link></li>
-          <li><button onClick={()=>dispatch({type:'SET_IS_AUTH',payload:!isAuth})}>{isAuth?'Logout':'Login'}</button></li>
+          <li><button>Login</button></li>
         </ul>
+        <button onClick={()=>dispatch({type:'SHOW_MENU',payload:!showMenu})}>
+          <i className="material-icons menu">menu</i>
+        </button>
       </section>
   )
 }

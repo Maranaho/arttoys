@@ -18,14 +18,16 @@ const App = ()=>{
     <ArtToysDispatchContext.Provider value={dispatch}>
       <ArtToysStateContext.Provider value={state}>
         <Router>
-          <main className="ArtToys">
+          <main className={`ArtToys ${state.showMenu?'menuIsShown':''}`}>
             <Nav/>
+            <div className="router">
             <Switch>
               <Route path="/detail/:toyID"><Detail/></Route>
               <Route path="/basket"><Basket/></Route>
               <Route path="/profile"><Profile/></Route>
               <Route path="/"><Shop/></Route>
             </Switch>
+            </div>
           </main>
         </Router>
     </ArtToysStateContext.Provider>
