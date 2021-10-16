@@ -1,8 +1,14 @@
 let initialArtToysState = {
-  isAuth:false
+  isAuth:false,
+  data:null,
 }
 const ArtToysReducer = (state, action) => {
   switch (action.type) {
+
+    case 'STORE_DATA':
+      let STORE_DATA = {...state}
+      STORE_DATA.data = action.payload
+    return STORE_DATA;
 
     case 'SET_IS_AUTH':
       let SET_IS_AUTH = {...state}
