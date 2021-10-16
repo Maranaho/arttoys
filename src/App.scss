@@ -12,23 +12,57 @@ body{
   font-size: 13px;
 }
 
+h1{
+  font-weight: 100;
+  font-size: 4em;
+  opacity: .6;
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+.artToyBtn{
+  font-weight: 700;
+  border-radius: 30px;
+  padding: 15px 40px;
+  border:none;
+  cursor: pointer;
+  &:disabled{
+    opacity: .4;
+    cursor: not-allowed;
+  }
+  &.primary {
+    color: #fff;
+    background: $blue;
+    &:hover{background: $dark}
+  }
+  &.ghost{
+    background: rgba(255,255,255,0);
+    border: 1.5px solid rgba(0,0,0,.7);
+    &:hover{
+      background: rgba(0,0,0,1);
+      color: #fff;
+    }
+  }
+}
+
 .ArtToys{
+  overflow: hidden;
   background: #f4f4f4;
   height: 812px;
   width: 380px;
   border: 1px solid #BABABA;
   border-radius: 40px;
-  overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   &.menuIsShown:after{
     z-index: 1;
     background: rgba(0,0,0,.5);
   }
   &:after{
     content:"";
-    transition: 1s ease;
+    transition: background 1s ease;
     position: absolute;
     top: 0;
     left: 0;
@@ -42,8 +76,16 @@ body{
 .router{
   position: relative;
   z-index: 1;
-  flex:1;
+  height: calc(100% - 90px);
 }
+
+.Shop{
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
 .Menu {
   >button{
     position: relative;
@@ -96,6 +138,8 @@ body{
 }
 
 .Nav {
+  height: 90px;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -117,4 +161,94 @@ body{
     &:hover{color:$blue}
   }
   img{border-radius: 80px}
+}
+
+.Tags{
+  width: 320px;
+  margin: 0 auto;
+  > section {
+    padding: 20px 0;
+  }
+}
+
+.List{
+  flex:1;
+  overflow-y: scroll;
+  padding: 10px;
+  &::-webkit-scrollbar {width: 0}
+  > section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    >article{
+      height: 170px;
+      position: relative;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 4px 5px rgba(0,0,0,.04);
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      a{
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        width: 80%;
+      }
+      img{max-width: 100%}
+      span,i{position: absolute}
+      .price{
+        top: 15px;
+        left: 15px;
+        font-size: .9em;
+        font-weight: 900;
+        strong{color: $blue}
+      }
+      .name{
+        bottom: 15px;
+        left: 15px;
+        font-size: .8em;
+      }
+      .fav{
+        top: 0;
+        right: 0;
+        font-size: 1.1em;
+        color: #DADADA;
+        transition: .5s ease;
+        padding: 10px;
+        cursor: pointer;
+        &.isFav{color:#FA7E9B}
+      }
+    }
+  }
+  .btnCtn {
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
+    p{color: #9a9a9a}
+  }
+}
+
+.ToyFilter{
+  width: 320px;
+  margin: 0 auto;
+  padding: 20px 0  40px;
+  position: relative;
+  i{
+    position: absolute;
+    top: 41px;
+    right: 23px;
+    opacity: .3;
+  }
+  input{
+    width: 100%;
+    padding: 25px 35px;
+    box-sizing: border-box;
+    border: 1px solid rgba(255,255,255,0);
+    border-radius: 80px;
+    box-shadow: 0 20px 40px rgba(50,50,50,.08);
+    outline: none;
+    &:hover{border: 1px solid #0a8fff57}
+    &:focus{border: 1px solid $blue}
+  }
 }

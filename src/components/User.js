@@ -4,7 +4,7 @@ const User = ()=>{
   const { data } = useContext(ArtToysStateContext)
   if(!data)return null
 
-  const { firstName,imgUrl } = data.user
+  const { firstName,imgUrl } = data[0].user
   return (
     <article className="User">
       <span>{firstName}</span>
