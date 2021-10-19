@@ -23,7 +23,7 @@ h1{
 .artToyBtn{
   font-weight: 700;
   border-radius: 30px;
-  padding: 15px 40px;
+  padding: 20px 40px;
   border:none;
   cursor: pointer;
   &:disabled{
@@ -33,7 +33,7 @@ h1{
   &.primary {
     color: #fff;
     background: $blue;
-    &:hover{background: $dark}
+    &:hover{background: #057bde}
   }
   &.ghost{
     background: rgba(255,255,255,0);
@@ -186,6 +186,46 @@ h1{
   }
 }
 
+.Basket{
+  padding: 20px 40px;
+}
+.Detail{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  > section{padding: 20px 40px}
+  > article{
+    padding: 40px;
+    background: #fff;
+    border-radius: 40px 40px 0 0;
+    border-top: 1px solid #e7e7e7;
+    flex-direction: column;
+    justify-content: space-between;
+    button{
+      width: 100%;
+      margin-top: 20px;
+    }
+  }
+  .price{font-size: 1.5em}
+  .imgCtn {
+    background: #f4f4f4;
+    text-align: center;
+    padding-top: 20px;
+    img{
+      max-width: 85%;
+      mix-blend-mode: multiply;
+    }
+  }
+}
+
+.back{
+  display: flex;
+  align-items: center;
+  color: $dark;
+  text-decoration: none;
+}
+
 .List{
   flex:1;
   overflow-y: scroll;
@@ -210,16 +250,12 @@ h1{
         display: flex;
         align-items: center;
         width: 80%;
+        height: 100%;
       }
-      img{max-width: 100%}
+      img{
+        max-width: 100%;
+      }
       span,i{position: absolute}
-      .price{
-        top: 15px;
-        left: 15px;
-        font-size: .9em;
-        font-weight: 900;
-        strong{color: $blue}
-      }
       .name{
         bottom: 15px;
         left: 15px;
@@ -242,6 +278,17 @@ h1{
     justify-content: center;
     padding: 0 0 50px;
     p{color: #9a9a9a}
+  }
+}
+
+.price{
+  top: 15px;
+  left: 15px;
+  font-size: .9em;
+  font-weight: 900;
+  &:before{
+    color: $blue;
+    content:"$";
   }
 }
 

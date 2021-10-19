@@ -19,7 +19,7 @@ const Toy = ({toy})=>{
 
   return (
     <article>
-      <Link to={`/detail/:${toy}`}>
+      <Link to={`/detail/${toy}`}>
         <img src={imgurl} alt={name}/>
       </Link>
       <span className="price"><strong>$</strong>{price}</span>

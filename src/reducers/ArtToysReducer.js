@@ -7,11 +7,19 @@ let initialArtToysState = {
   pageRange:1,
   tags:null,
   currentTags:[],
+  basket:[],
 
 
 }
 const ArtToysReducer = (state, action) => {
   switch (action.type) {
+
+    case 'ADD_BASKET':
+      let ADD_BASKET = {...state}
+      const cartIndex = ADD_BASKET.basket.indexOf(action.payload)
+      if(cartIndex=== -1)ADD_BASKET.basket.push(action.payload)
+      else ADD_BASKET.basket.splice(cartIndex,1)
+    return ADD_BASKET;
 
     case 'ALL_TAGS':
       let ALL_TAGS = {...state}
