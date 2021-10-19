@@ -5,11 +5,30 @@ let initialArtToysState = {
   toysPerPage:12,
   nbOfPages:0,
   pageRange:1,
+  tags:null,
+  currentTags:[],
 
 
 }
 const ArtToysReducer = (state, action) => {
   switch (action.type) {
+
+    case 'ALL_TAGS':
+      let ALL_TAGS = {...state}
+      if(ALL_TAGS.currentTags.length !== 0 && ALL_TAGS.currentTags.length !== ALL_TAGS.tags.length) ALL_TAGS.currentTags = [...ALL_TAGS.tags]
+    return ALL_TAGS;
+
+    case 'SET_TAG_FILTER':
+      let SET_TAG_FILTER = {...state}
+      const tagIdx = SET_TAG_FILTER.currentTags.indexOf(action.payload)
+      if(tagIdx!==-1)SET_TAG_FILTER.currentTags.splice(tagIdx,1)
+      else SET_TAG_FILTER.currentTags.push(action.payload)
+    return SET_TAG_FILTER;
+
+    case 'TAGS':
+      let TAGS = {...state}
+      TAGS.tags = action.payload
+    return TAGS;
 
     case 'SET_FAV':
       let SET_FAV = {...state}

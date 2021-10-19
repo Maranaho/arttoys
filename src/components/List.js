@@ -5,7 +5,7 @@ import Toy from './Toy'
 
 const List = ()=>{
   const dispatch = useContext(ArtToysDispatchContext)
-  const { data,toysPerPage,nbOfPages,pageRange,listFilter } = useContext(ArtToysStateContext)
+  const { currentTags,data,toysPerPage,nbOfPages,pageRange,listFilter } = useContext(ArtToysStateContext)
 
   const getTags =()=>{
     if (data) {
@@ -20,6 +20,10 @@ const List = ()=>{
   const toys = data[1].toys
   const trimmedList = Object.keys(toys)
   .filter(toy=>toys[toy].name.toLowerCase().indexOf(listFilter.toLowerCase())!==-1)
+  .filter(toy=>{
+    if(currentTags.length) return currentTags.indexOf(toys[toy].type)!==-1
+    else return true
+  })
   .splice(0,toysPerPage*pageRange)
 
   return (
