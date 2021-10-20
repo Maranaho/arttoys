@@ -15,6 +15,7 @@ const Toy = ({toy})=>{
   const handleFav = ()=>{
     if(hasFav)dispatch({type:'SET_FAV',payload:{toy,fav:!toys[toy].fav}})
     else dispatch({type:'SET_FAV',payload:{toy,fav:true}})
+    dispatch({type:'ADD_BASKET',payload:toy})
   }
 
   return (

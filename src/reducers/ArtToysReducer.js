@@ -14,6 +14,12 @@ let initialArtToysState = {
 const ArtToysReducer = (state, action) => {
   switch (action.type) {
 
+    case 'UPDATE_QTY':
+      let UPDATE_QTY = {...state}
+      const { qtyToy,qty } = action.payload
+      UPDATE_QTY.data[1].toys[qtyToy].qty = qty
+    return UPDATE_QTY;
+
     case 'ADD_BASKET':
       let ADD_BASKET = {...state}
       const cartIndex = ADD_BASKET.basket.indexOf(action.payload)

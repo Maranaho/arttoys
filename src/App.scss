@@ -33,6 +33,10 @@ h1{
   &.primary {
     color: #fff;
     background: $blue;
+    a{
+      text-decoration: none;
+      color:#fff;
+    }
     &:hover{background: #057bde}
   }
   &.ghost{
@@ -118,6 +122,7 @@ h1{
     li{
       display: flex;
       border-top: 1px solid #eee;
+      &.current a{color:$blue}
     }
     button{
       border: none;
@@ -174,9 +179,10 @@ h1{
     li {
       background: #e9e9e9;
       color:#909090;
-      padding: 5px 15px;
+      padding: 5px 10px;
       margin: 5px;
       border-radius: 50px;
+      font-size: .9em;
       cursor: pointer;
       &.current{
         background: $blue;
@@ -188,6 +194,9 @@ h1{
 
 .Basket{
   padding: 20px 40px;
+  > section {
+    img{width: 120px}
+  }
 }
 .Detail{
   height: 100%;
