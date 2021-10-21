@@ -1,8 +1,9 @@
-import { useContext,useEffect } from 'react'
-import { useParams,Link } from "react-router-dom"
+import { useContext } from 'react'
 import ArtToysStateContext from '../context/ArtToysStateContext'
 import ArtToysDispatchContext from '../context/ArtToysDispatchContext'
 import Back from './Back'
+import ToyList from './ToyList'
+import Total from './Total'
 
 const Basket = ()=>{
   const dispatch = useContext(ArtToysDispatchContext)
@@ -10,39 +11,24 @@ const Basket = ()=>{
   if(!data)return null
   return(
     <main className="Basket">
-      <Back/>
-      <section>
-        {basket.map(toy=>{
-          const thatToy = data[1].toys[toy]
-          const { name,imgurl,price } = thatToy
-          const qty = thatToy.hasOwnProperty('qty')?thatToy.qty:1
-          return (
-            <article key={`basketItem${toy}`}>
-              <div>
-                <span>{name}</span>
-                <span className="price">{price}</span>
-                <input
-                  type="number"
-                  value={qty}
-                  onChange={e=>dispatch({type:'UPDATE_QTY',payload:{qtyToy:toy,qty:Number(e.target.value)}})}/>
-              </div>
-              <img src={imgurl} alt={name}/>
-              <i onClick={()=>dispatch({type:'ADD_BASKET',payload:toy})}
-                className="material-icons">delete_outline</i>
-            </article>
-          )
-        })}
+      <header>
+        <Back/>
+        <h1>My Favs</h1>
+        <h2>Check and pay your toys</h2>
+      </header>
+      <section className="list">
+        {basket.length > 0&&(
+          <div className="clear">
+            <button onClick={()=>dispatch({type:'CLEAR'})}>
+              <span>Clear</span>
+              <i className="material-icons">close</i>
+            </button>
+          </div>
+        )}
+        <ToyList/>
       </section>
-      {basket.length === 0&&(
-        <div>
-          <p>Go get some toys!</p>
-          <button className="artToyBtn primary">
-            <Link to="/">Go buy stuff</Link>
-          </button>
-        </div>
-      )}
-
-
+      <Total/>
+      <button disabled={basket.length === 0} className="artToyBtn primary">Checkout</button>
     </main>
   )
 }

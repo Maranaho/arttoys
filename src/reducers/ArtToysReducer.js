@@ -7,12 +7,27 @@ let initialArtToysState = {
   pageRange:1,
   tags:null,
   currentTags:[],
-  basket:[],
+  basket:['61656109fc13ae5c42000122', '61656109fc13ae5c42000123', '61656109fc13ae5c4200012b', '61656109fc13ae5c4200012a', '61656109fc13ae5c4200012e'],
 
 
 }
 const ArtToysReducer = (state, action) => {
   switch (action.type) {
+
+    case 'CLEAR':
+      let CLEAR = {...state}
+      CLEAR.basket = []
+    return CLEAR;
+
+    case 'DECREMENT_QTY':
+      let DECREMENT_QTY = {...state}
+      DECREMENT_QTY.data[1].toys[action.payload].qty--
+    return DECREMENT_QTY;
+
+    case 'INCREMENT_QTY':
+      let INCREMENT_QTY = {...state}
+      INCREMENT_QTY.data[1].toys[action.payload].qty++
+    return INCREMENT_QTY;
 
     case 'UPDATE_QTY':
       let UPDATE_QTY = {...state}

@@ -63,10 +63,11 @@ h1{
   &.menuIsShown:after{
     z-index: 1;
     background: rgba(0,0,0,.5);
+    transition: background 1s ease;
   }
   &:after{
     content:"";
-    transition: background 1s ease;
+    transition: background 0s ease;
     position: absolute;
     top: 0;
     left: 0;
@@ -194,9 +195,126 @@ h1{
 
 .Basket{
   padding: 20px 40px;
-  > section {
-    img{width: 120px}
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
+  .list{height: calc(100% - 270px)}
+  .clear{
+    display: flex;
+    justify-content: flex-end;
+    button{
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
+      font-weight: 700;
+      border: 1px solid #aaa;
+      padding: 3px 10px;
+      border-radius: 10px;
+      cursor:pointer;
+      i{
+        font-size: 1em;
+        color: #aaa;
+      }
+      span{
+        color: #aaa;
+        font-size: .8em;
+      }
+    }
   }
+  h2 {
+    font-weight: 400;
+    font-size: .9em;
+    margin: 0;
+    opacity: .7;
+  }
+  .ToyList {
+    height: calc(100% - 20px);
+    margin-top: 10px;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {width: 0}
+    > article {
+      display: flex;
+      justify-content: space-between;
+      background: #fff;
+      margin-top: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 5px rgba(0,0,0,.04);
+      position: relative;
+      overflow: hidden;
+      padding-right: 20px;
+      > div{
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+      }
+      .delete{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        opacity: .3;
+        font-size: 1.5em;
+        cursor: pointer;
+        &:hover{opacity: .6}
+      }
+      .qtyCtn {
+        display: flex;
+        height: 40px;
+        align-items: center;
+        input{
+          height: 100%;
+          width: 44px;
+          box-sizing: border-box;
+          text-align: center;
+          margin-right: 7px;
+          border: 1px solid #ddd;
+          border-radius: 7px;
+          outline:none;
+          &:focus,&:hover{border-color:$blue}
+        }
+        .changeQty {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          button {
+            padding: 0;
+            border: none;
+            background: none;
+            cursor: pointer;
+            i{font-size: 1.5em}
+          }
+        }
+      }
+    }
+    img{width: 120px}
+    .price{
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+  }
+  .artToyBtn{margin-bottom: 20px}
+}
+.buyStuff{
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.Total{
+  display: flex;
+  justify-content: space-between;
+  background: rgba(255,255,255,.4);
+  box-shadow: 0 4px 5px rgba(0,0,0,.04);
+  padding: 10px 20px;
+  margin: 30px 0;
+  border-radius: 10px;
+  align-items: center;
+  .price{font-size: 1.2em}
 }
 .Detail{
   height: 100%;
@@ -238,8 +356,8 @@ h1{
 .List{
   flex:1;
   overflow-y: scroll;
-  padding: 10px;
   &::-webkit-scrollbar {width: 0}
+  padding: 10px;
   > section {
     display: grid;
     grid-template-columns: 1fr 1fr;
